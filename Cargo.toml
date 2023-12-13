@@ -1,0 +1,19 @@
+[package]
+name = "cfsh"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.75"
+directories = "5.0.1"
+ron = "0.8.1"
+serde = { version = "1.0.193", features = ["derive"] }
+serde_json = "1.0.108"
+serde_yaml = "0.9.27"
+uuid = { version = "1.6.1", features = ["fast-rng", "v4"] }
+which = "5.0.0"
+
+[profile.dev.package."*"]
+opt-level = 3

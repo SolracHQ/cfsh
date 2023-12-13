@@ -1,0 +1,65 @@
+Config (
+    aliases: [
+        (
+            name: "ls",
+            command: "eza --icons=auto",
+            when: inPath("eza")
+        ),
+        (
+            name: "la",
+            command: "ls -lAh"
+        ),
+        (
+            name: "ll",
+            command: "eza --icons=auto -lAh --sort=name --group-directories-first",
+            when: inPath("eza")
+        ),
+        (
+            name: "cat",
+            command: "bat",
+            when: inPath("bat")
+        ),
+        (
+            name: "in",
+            command: "pacman -S",
+            when: inPath("pacman")
+        )
+    ],
+    envars: [
+        (
+            name: "EDITOR",
+            value: "nvim",
+            when: and([inPath("nvim"), not(is(windows))])
+        ),
+        (
+            name: "EDITOR",
+            value: "code",
+            when: and([inPath("code"), or([is(windows), is(macos)])])
+        ),
+        (
+            name: "VISUAL",
+            value: "nvim",
+            when: and([inPath("nvim"), is(linux), isSet("EDITOR")])
+        ),
+        (
+            name: "PAGER",
+            value: "less",
+            when: and([inPath("less"), is(linux)])
+        ),
+        (
+            name: "BROWSER",
+            value: "firefox",
+            when: and([inPath("firefox"), isSetTo("DISPLAY", ":0")])
+        ),
+        (
+            name: "SHELL",
+            value: "zsh",
+            when: shell(zsh)
+        ),
+        (
+            name: "SHELL",
+            value: "bash",
+            when: shell(bash)
+        )
+    ]
+)
