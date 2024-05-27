@@ -39,7 +39,7 @@
       "name": "EDITOR",
       "value": "nvim",
       "when": {
-        "and": [
+        "all": [
           {
             "inPath": "nvim"
           },
@@ -55,12 +55,12 @@
       "name": "EDITOR",
       "value": "code",
       "when": {
-        "and": [
+        "all": [
           {
             "inPath": "code"
           },
           {
-            "or": [
+            "any": [
               {
                 "is": "windows"
               },
@@ -76,7 +76,7 @@
       "name": "VISUAL",
       "value": "nvim",
       "when": {
-        "and": [
+        "all": [
           {
             "inPath": "nvim"
           },
@@ -93,7 +93,7 @@
       "name": "PAGER",
       "value": "less",
       "when": {
-        "and": [
+        "all": [
           {
             "inPath": "less"
           },
@@ -107,7 +107,7 @@
       "name": "BROWSER",
       "value": "firefox",
       "when": {
-        "and": [
+        "all": [
           {
             "inPath": "firefox"
           },

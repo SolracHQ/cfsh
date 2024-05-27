@@ -29,27 +29,27 @@ Config (
         (
             name: "EDITOR",
             value: "nvim",
-            when: and([inPath("nvim"), not(is(windows))])
+            when: all([inPath("nvim"), not(is(windows))])
         ),
         (
             name: "EDITOR",
             value: "code",
-            when: and([inPath("code"), or([is(windows), is(macos)])])
+            when: all([inPath("code"), any([is(windows), is(macos)])])
         ),
         (
             name: "VISUAL",
             value: "nvim",
-            when: and([inPath("nvim"), is(linux), isSet("EDITOR")])
+            when: all([inPath("nvim"), is(linux), isSet("EDITOR")])
         ),
         (
             name: "PAGER",
             value: "less",
-            when: and([inPath("less"), is(linux)])
+            when: all([inPath("less"), is(linux)])
         ),
         (
             name: "BROWSER",
             value: "firefox",
-            when: and([inPath("firefox"), isSetTo("DISPLAY", ":0")])
+            when: all([inPath("firefox"), isSetTo("DISPLAY", ":0")])
         ),
         (
             name: "SHELL",

@@ -17,30 +17,30 @@ aliases:
 envars:
 - name: EDITOR
   value: nvim
-  when: !and
+  when: !all
   - !inPath nvim
   - !is linux
 - name: EDITOR
   value: code
-  when: !and
+  when: !all
   - !inPath code
-  - !or
+  - !any
     - !is windows
     - !is macos
 - name: VISUAL
   value: nvim
-  when: !and
+  when: !all
   - !inPath nvim
   - !is linux
   - !isSet EDITOR
 - name: PAGER
   value: less
-  when: !and
+  when: !all
   - !inPath less
   - !is linux
 - name: BROWSER
   value: firefox
-  when: !and
+  when: !all
   - !inPath firefox
   - !isSetTo
     - DISPLAY

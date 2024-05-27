@@ -23,9 +23,9 @@ pub enum Condition {
     /// Check if environment variable is not set
     Shell(crate::shell::Shell),
     /// And condition - all conditions must be true
-    And(Vec<Condition>),
+    All(Vec<Condition>),
     /// Or condition - any condition must be true
-    Or(Vec<Condition>),
+    Any(Vec<Condition>),
     /// Not condition - condition must be false
     Not(Box<Condition>),
     #[default]
@@ -41,8 +41,8 @@ impl Condition {
             Condition::IsSet(var) => std::env::var(var).is_ok(),
             Condition::IsSetTo(var, val) => std::env::var(var).map(|v| v == *val).unwrap_or(false),
             Condition::Shell(shell) => shell == target,
-            Condition::And(conds) => conds.iter().all(|cond| cond.eval(target)),
-            Condition::Or(conds) => conds.iter().any(|cond| cond.eval(target)),
+            Condition::All(conds) => conds.iter().all(|cond| cond.eval(target)),
+            Condition::Any(conds) => conds.iter().any(|cond| cond.eval(target)),
             Condition::Not(cond) => !cond.eval(target),
             Condition::True => true,
         }
